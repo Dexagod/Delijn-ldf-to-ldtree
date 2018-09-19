@@ -36,8 +36,8 @@ async function convertdata(searchPredicate){
         for(var index = 0; index < data.length; index++){
             if (index % 100 === 0){console.log("Line", index)}
             let rep = data[index][searchPredicate][0]["@value"]
-            ptree.addData(tree, rep, data[index])
-            ptree.addData(provincietree, rep, data[index])
+            tree.addData(rep, data[index])
+            provincietree.addData(rep, data[index])
 
             let item = data[index]
             let lat = item["http://www.w3.org/2003/01/geo/wgs84_pos#lat"];
@@ -51,7 +51,7 @@ async function convertdata(searchPredicate){
             }
 
         }
-        ptree.doneAdding(provincietree);
+        provincietree.doneAdding();
 
         ptree.writeTree(provincietree, collectionDir, provincieCollectionFile)
 
@@ -66,7 +66,7 @@ async function convertdata(searchPredicate){
     });
 
 
-    ptree.doneAdding(tree);
+    tree.doneAdding();
 
     ptree.writeTree(tree, collectionDir, collectionFile)
 }
