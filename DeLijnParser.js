@@ -1,7 +1,7 @@
 var jsonld = require("jsonld")
 var Ptree = require("rdf-patricia-tree")
 var jld = new jsonld({});
-const Rtree = require('../rtree/index.js');
+const Rtree = require('rtree-ldf');
 
 
 
@@ -19,7 +19,7 @@ async function convertdata(searchPredicate){
     let dataDir = "stops/"
     let collectionDir = "delijn/"
     let collectionFile = "delijnstops"
-    let tree = ptree.createTree(sourceDir, dataDir, 10000, 100)
+    let tree = ptree.createTree(sourceDir, dataDir, 10000, 35)
 
     let provincies = ["Oost-Vlaanderen", "West-Vlaanderen", "Vlaams-Brabant", "Antwerpen", "Limburg"]
     for (var i = 0; i < provincies.length; i++){
